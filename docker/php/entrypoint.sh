@@ -9,7 +9,7 @@ php artisan key:generate --force --ansi || true
 
 echo "Waiting for database..."
 until php -r "new PDO('pgsql:host=${DB_HOST};port=${DB_PORT};dbname=${DB_DATABASE}', '${DB_USERNAME}', '${DB_PASSWORD}');" > /dev/null 2>&1; do
-    sleep 2
+    sleep 1
 done
 echo "Database is up."
 

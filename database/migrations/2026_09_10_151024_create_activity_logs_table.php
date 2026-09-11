@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('activity_logs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable->constrained('users')->nullOnDelete();
+            $table->foreignId('user_id')->nullable()->constrained('users')->nullOnDelete();
             $table->string('method', 10);
             $table->string('path');
             $table->string('action')->nullable();
             $table->unsignedSmallInteger('status_code')->nullable();
             $table->string('ip_address', 45)->nullable();
-            $table->timestamp('created_at')->userCurrent();
+            $table->timestamp('created_at')->useCurrent();
         });
     }
 
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        schema::dropIfExists('activity_logs');
+        Schema::dropIfExists('activity_logs');
     }
 };
