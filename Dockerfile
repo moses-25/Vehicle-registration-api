@@ -15,7 +15,7 @@ WORKDIR /var/www
 
 COPY . .
 
-RUN if [ -f composer.json ]; then composer install --no-interaction --optimize-autoloader --no-dev; fi \
+RUN if [ -f composer.json ]; then composer install --no-interaction --optimize-autoloader; fi \
     && chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache \
     && chmod +x docker/php/entrypoint.sh
 
