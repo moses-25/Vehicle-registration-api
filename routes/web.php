@@ -3,5 +3,9 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return response()->json([
+        'name' => config('app.name'),
+        'status' => 'ok',
+        'docs' => 'see README.md for the APi endpoints',
+    ]);
 });
