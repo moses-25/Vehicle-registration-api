@@ -14,12 +14,12 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/me', [AuthController::class, 'me']);
 
     // Users: administrator-only (management of system accounts)
-    Route::middleware('role:administrador')->group(function () {
+    Route::middleware('role:administrator')->group(function () {
         Route::apiResource('users', UserController::class);
     });
 
-    // Vehicles: administrador + operador can list/create/update; delete is admin-only
-    Route::middleware('role:administrador,operador')->group(function () {
+    // Vehicles: administrador + operator can list/create/update; delete is admin-only
+    Route::middleware('role:administrator,operator')->group(function () {
         Route::get('/vehicles', [VehicleController::class, 'index']);
         Route::post('/vehicles', [VehicleController::class, 'store']);
         Route::get('/vehicles/{vehicle}', [VehicleController::class, 'show']);
@@ -28,5 +28,5 @@ Route::middleware('auth:sanctum')->group(function () {
     });
 
     Route::delete('/vehicles/{vehicle}', [VehicleController::class, 'destroy'])
-        ->middleware('role:administrador');
+        ->middleware('role:administrator');
 });
