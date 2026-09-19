@@ -27,7 +27,7 @@ class StoreUserRequest extends FormRequest
             'name' => ['required', 'string', 'max:100'],
             'email' => ['required', 'email', 'unique:users,email'],
             'password' => ['required', Password::min(10)],
-            'role' => ['required', new Enum(\App\Enums\userRole::class)],
+            'role' => ['required', new Enum(\App\Enums\UserRole::class)],
         ];
     }
 }

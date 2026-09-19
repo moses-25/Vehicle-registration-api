@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rules\Emum;
+use Illuminate\Validation\Rules\Enum;
 
 class StoreVehicleRequest extends FormRequest
 {
@@ -27,7 +27,7 @@ class StoreVehicleRequest extends FormRequest
             'type' => ['required', new Enum(\App\Enums\VehicleType::class)],
             'brand' => ['required', 'string', 'max:50'],
             'model' => ['required', 'string', 'max:50'],
-            'year' => ['required', 'integer', 'min:1900', 'max:'.(date('y') + 1)],
+            'year' => ['required', 'integer', 'min:1900', 'max:'.(date('Y') + 1)],
             'color' => ['required', 'string', 'max:20'],
             'owner_name' => ['required', 'string', 'max:100'],
             'owner_document' => ['required', 'string', 'max:30'],
