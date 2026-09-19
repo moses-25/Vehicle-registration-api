@@ -38,14 +38,14 @@ class UserFactory extends Factory
             'email' => str_replace('@', "+{$suffix}@", $entry['email']),
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
-            'role' => UserRole::Operador,
+            'role' => UserRole::Operator,
             'remember_token' => substr(uniqid('', true), 0, 10),
         ];
     }
 
     public function admin(): static
     {
-        return $this->state(fn (array $attributes) => ['role' => UserRole::Administrador]);
+        return $this->state(fn (array $attributes) => ['role' => UserRole::Administrator]);
     }
 
     public function unverified(): static
