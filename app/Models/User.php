@@ -33,7 +33,7 @@ class User extends Authenticatable
 
     public function isAdmin(): bool
     {
-        return $this->role === UserRole::Administrador;
+        return $this->role === UserRole::Administrator;
     }
 
     /**
