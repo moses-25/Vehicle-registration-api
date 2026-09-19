@@ -14,7 +14,7 @@ class VehicleApiTest extends TestCase
 
     public function test_operator_can_list_vehicles(): void
     {
-        $operator = User::factory()->create(['role' => UserRole::Operador]);
+        $operator = User::factory()->create(['role' => UserRole::Operator]);
         Vehicle::factory()->count(3)->create(['created_by' => $operator->id]);
 
         $this->actingAs($operator, 'sanctum')
@@ -25,7 +25,7 @@ class VehicleApiTest extends TestCase
 
     public function test_operator_cannot_delete_vehicle(): void
     {
-        $operator = User::factory()->create(['role' => UserRole::Operador]);
+        $operator = User::factory()->create(['role' => UserRole::Operator]);
         $vehicle = Vehicle::factory()->create(['created_by' => $operator->id]);
 
         $this->actingAs($operator, 'sanctum')
