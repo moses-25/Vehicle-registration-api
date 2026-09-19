@@ -3,7 +3,7 @@
 namespace App\Observers;
 
 use App\Models\Vehicle;
-use illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Log;
 
 class VehicleObserver
 {
