@@ -23,10 +23,12 @@ class VehicleFactory extends Factory
         ['type' => VehicleType::Motorcycle, 'brand' => 'Harley-Davidson', 'model' => 'CVO Road Glide', 'year' => 2024, 'color' => 'Black', 'owner_name' => 'Sarah Davis', 'owner_document' => '456-78-9012'],
     ];
 
+    protected static int $poolIndex = 0;
+
     public function definition(): array
     {
-        $entry = static::$pool[static::$index ??= 0];
-        static::$index = (static::$index + 1) % count(static::$pool);
+        $entry = static::$pool[static::$poolIndex];
+        static::$poolIndex = (static::$poolIndex + 1) % count(static::$pool);
 
         return [
             'plate' => strtoupper(substr(uniqid(), -3)).'-'.random_int(100, 999),
