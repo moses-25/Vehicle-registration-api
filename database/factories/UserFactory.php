@@ -14,6 +14,8 @@ class UserFactory extends Factory
 {
     protected static ?string $password;
 
+    protected static int $poolIndex = 0;
+
     /**
      * Manually curated pool of American names/emails — no Faker.
      */
@@ -27,8 +29,8 @@ class UserFactory extends Factory
 
     public function definition(): array
     {
-        $entry = static::$pool[static::$count ??= 0];
-        static::$count = (static::$count + 1) % count(static::$pool);
+        $entry = static::$pool[static::$poolIndex];
+        static::$poolIndex = (static::$poolIndex + 1) % count(static::$pool);
 
         // Ensure uniqueness across multiple calls within the same test run.
         $suffix = uniqid();
